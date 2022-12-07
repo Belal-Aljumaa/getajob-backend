@@ -1,10 +1,21 @@
 import fs from "fs";
+import * as model from "./model.js";
 
 type skill = {
   idCode: string;
   name: string;
   url: string;
   description: string;
+};
+
+type RawJob = {
+  id: number;
+  title: string;
+  company: string;
+  description: string;
+  url: string;
+  skillList: string;
+  todo: string;
 };
 
 type Job = {
@@ -18,7 +29,7 @@ type Job = {
   todo: string;
 };
 
-const _jobs: any[] = JSON.parse(
+const rawJobs: RawJob[] = JSON.parse(
   fs.readFileSync("./src/data/jobs.json", "utf8")
 );
 const skillInfos: any = JSON.parse(
@@ -27,18 +38,22 @@ const skillInfos: any = JSON.parse(
 
 export const getJobs = () => {
   const jobs: Job[] = [];
-  _jobs.forEach((_job: any) => {
+  rawJobs.forEach((rawJobs: RawJob) => {
     const job: Job = {
-      ..._job,
-      skills: []
-    }
-    jobs.push(job)
-  })
+      ...rawJobs,
+      skills: model.buildSkills(rawJobs.skillList),
+    };
+    jobs.push(job);
+  });
   return jobs;
 };
 
+export const buildSkills = (skillList: string) => {
+  return [];
+};
+
 export const getTodos = () => {
-  return _jobs.map((job: Job) => {
+  return rawJobs.map((job: Job) => {
     return {
       todo: job.todo,
       company: job.company,
