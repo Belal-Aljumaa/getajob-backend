@@ -1,39 +1,23 @@
 import express from "express";
-import fs from "fs";
 import cors from 'cors';
+import * as model from './model.js'
 
-type Job = {
-  id: number;
-  title: string;
-  company: string;
-  description: string;
-  url: string;
-  skillList: string;
-  todo: string;
-};
 
 const app = express();
 app.use(cors());
 const PORT = 3333;
 
-const jobs: Job[] = JSON.parse(fs.readFileSync("./src/data/jobs.json", "utf8"));
 
 app.get("/", (req: express.Request, res: express.Response) => {
-  res.send("job site api");
+  res.send(model.getApiDocumentationHtml());
 });
 
 app.get("/jobs", (req: express.Request, res: express.Response) => {
-  res.json(jobs);
+  res.json(model.getJobs());
 });
 
 app.get("/todos", (req: express.Request, res: express.Response) => {
-  res.json(jobs.map((job: Job)=> {
-    return {
-      todo: job.todo,
-      company: job.company,
-      title: job.title,
-    };
-  }));
+  res.json(model.getTodos());
 });
 
 app.listen(PORT, () => {
