@@ -1,13 +1,16 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@types/cors': ^2.8.13
   '@types/express': ^4.17.14
   '@types/lodash-es': ^4.17.6
+  '@types/lowdb': ^1.0.11
   '@types/node': ^18.11.11
   axios: ^1.2.1
   cors: ^2.8.5
   express: ^4.18.2
   lodash-es: ^4.17.21
+  lowdb: ^5.0.5
   nodemon: ^2.0.20
   typescript: ^4.9.3
 
@@ -16,10 +19,13 @@ dependencies:
   cors: 2.8.5
   express: 4.18.2
   lodash-es: 4.17.21
+  lowdb: 5.0.5
 
 devDependencies:
+  '@types/cors': 2.8.13
   '@types/express': 4.17.14
   '@types/lodash-es': 4.17.6
+  '@types/lowdb': 1.0.11
   '@types/node': 18.11.11
   nodemon: 2.0.20
   typescript: 4.9.3
@@ -35,6 +41,12 @@ packages:
 
   /@types/connect/3.4.35:
     resolution: {integrity: sha512-cdeYyv4KWoEgpBISTxWvqYsVy444DOqehiF3fM3ne10AmJ62RSyNkUnxMJXHQWRQQX2eR94m5y1IZyDwBjV9FQ==}
+    dependencies:
+      '@types/node': 18.11.11
+    dev: true
+
+  /@types/cors/2.8.13:
+    resolution: {integrity: sha512-RG8AStHlUiV5ysZQKq97copd2UmVYw3/pRMLefISZ3S1hK104Cwm7iLQ3fTKx+lsUH2CE8FlLaYeEA2LSeqYUA==}
     dependencies:
       '@types/node': 18.11.11
     dev: true
@@ -64,6 +76,12 @@ packages:
 
   /@types/lodash/4.14.191:
     resolution: {integrity: sha512-BdZ5BCCvho3EIXw6wUCXHe7rS53AIDPLE+JzwgT+OsJk53oBfbSmZZ7CX4VaRoN78N+TJpFi9QPlfIVNmJYWxQ==}
+    dev: true
+
+  /@types/lowdb/1.0.11:
+    resolution: {integrity: sha512-h99VMxvTuz+VsXUVCCJo4dsps4vbkXwvU71TpmxDoiBU24bJ0VBygIHgmMm+UPoQIFihmV6euRik4z8J7XDJWg==}
+    dependencies:
+      '@types/lodash': 4.14.191
     dev: true
 
   /@types/mime/3.0.1:
@@ -486,6 +504,13 @@ packages:
     resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
     dev: false
 
+  /lowdb/5.0.5:
+    resolution: {integrity: sha512-7EWKmIMhNKA8TXFhL8t0p6N2LC53l3ZqsWQGSksGhhjrcms9rbKlyrAh2PzSGK5v0KPJ2W5VItBnC3NDRzOnzQ==}
+    engines: {node: '>=14.16'}
+    dependencies:
+      steno: 3.0.0
+    dev: false
+
   /media-typer/0.3.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
@@ -713,6 +738,11 @@ packages:
   /statuses/2.0.1:
     resolution: {integrity: sha512-RwNA9Z/7PrK06rYLIzFMlaF+l73iwpzsqRIFgbMLbTcLD6cOao82TaWefPXQvB2fOC4AjuYSEndS7N/mTCbkdQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /steno/3.0.0:
+    resolution: {integrity: sha512-uZtn7Ht9yXLiYgOsmo8btj4+f7VxyYheMt8g6F1ANjyqByQXEE2Gygjgenp3otHH1TlHsS4JAaRGv5wJ1wvMNw==}
+    engines: {node: '>=14.16'}
     dev: false
 
   /supports-color/5.5.0:

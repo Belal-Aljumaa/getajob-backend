@@ -1,27 +1,3 @@
-export type Skill = {
-  idCode: string;
-  name: string;
-  url: string;
-  description: string;
-};
-
-export const nullObjectSkill: Skill = {
-  idCode: "",
-  name: "",
-  url: "",
-  description: ""
-};
-
-export type RawJob = {
-  id: number;
-  title: string;
-  company: string;
-  description: string;
-  url: string;
-  skillList: string;
-  todo: string;
-};
-
 export type Job = {
   id: number;
   title: string;
@@ -33,13 +9,28 @@ export type Job = {
   todo: string;
 };
 
+export type Skill = {
+  idCode: string;
+  name: string;
+  url: string;
+  description: string;
+};
+
 export type Todo = {
-  todoText: string;
+  todo: string;
   company: string;
   title: string;
-}
+  url: string;
+};
 
 export type TotaledSkill = {
   skill: Skill;
   total: number;
-}
+};
+
+export const nullObjectSkill: Skill = {
+  idCode: "",
+  name: "",
+  url: "",
+  description: "",
+};
