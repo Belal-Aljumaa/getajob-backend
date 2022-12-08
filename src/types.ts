@@ -32,3 +32,14 @@ export type Job = {
   skills: Skill[];
   todo: string;
 };
+
+export type Todo = {
+  todoText: string;
+  company: string;
+  title: string;
+}
+
+export type TotaledSkill = {
+  skill: Skill;
+  total: number;
+}

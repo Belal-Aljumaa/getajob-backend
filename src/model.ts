@@ -1,6 +1,6 @@
 import fs from "fs";
 import * as model from "./model.js";
-import { RawJob, Job, Skill, nullObjectSkill } from "./types.js";
+import { RawJob, Job, Skill, nullObjectSkill, TotaledSkill } from "./types.js";
 
 const rawJobs: RawJob[] = JSON.parse(
   fs.readFileSync("./src/data/jobs.json", "utf8")
@@ -53,10 +53,36 @@ export const getTodos = () => {
   });
 };
 
+export const getTotaledSkills = () => {
+  const totaledSkills: TotaledSkill[] = [];
+  model.getJobs().forEach(job => {
+      job.skills.forEach(skill => {
+          const existingTotaledSkill = totaledSkills.find(totaledSkill => totaledSkill.skill.idCode === skill.idCode);
+          if (!existingTotaledSkill) {
+              totaledSkills.push({
+                  skill,
+                  total: 1
+              });
+          } else {
+              existingTotaledSkill.total++;
+          }
+      });
+  })
+  return totaledSkills;
+}
+
 export const getApiDocumentationHtml = () => {
   return `
+  <style>
+a, h1 {
+    background-color: #ddd;
+    font-family: courier;
+}
+</style>
   <h1>Get a Job Api</h1>
   <ul>
     <li><a href="jobs">/jobs</a> - returns an array of job objects</li>
+    <li><a href="todos">/todos</a> - array of todos with todo/company/title fields</li>
+    <li><a href="totaledSkills">/totaledSkills</a> - array of skills with totals how often they occur in job listings</li>
   </ul>`;
 };

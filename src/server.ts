@@ -20,6 +20,10 @@ app.get("/todos", (req: express.Request, res: express.Response) => {
   res.json(model.getTodos());
 });
 
+app.get('/totaledSkills', (req: express.Request, res: express.Response) => {
+  res.json(model.getTotaledSkills());
+});
+
 app.listen(PORT, () => {
   console.log(`listening on port http://localhost:${PORT}`);
 });
